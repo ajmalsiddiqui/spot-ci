@@ -31,3 +31,11 @@ fi
 echo "$TERM_PROMPT Deploying project"
 
 gcloud app deploy -q --project spot-ci-1
+
+if [ $? -eq 0 ] ; then
+	echo "$TERM_PROMPT Successfully deployed!"
+else
+	echo "$TERM_PROMPT Something went wrong! There is likely an error log above"
+	echo "$TERM_PROMPT exiting..."
+	exit 1
+fi
