@@ -13,10 +13,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/ci', (req, res) => {
 	try {
 		const child = execFile('./main.sh', {cwd: __dirname}, (error, stdout, stderr) => {
-			if (error) {
-				throw error;
-			}
+			if (error) 
+				res.status(200).json({
+					'message': 'Something went wrong',
+					'error': JSON.stringify(error)
+				});
 			console.log(stdout);
+			console.log(stderr);
 			res.status(200).json({
 				'message': 'successfully updated deployment'
 			});
