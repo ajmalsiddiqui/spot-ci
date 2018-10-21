@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/ci', (req, res) => {
 	try {
-		const child = execFile('node', ['--version'], (error, stdout, stderr) => {
+		const child = execFile('./main.sh'], (error, stdout, stderr) => {
 			if (error) {
 				throw error;
 			}
